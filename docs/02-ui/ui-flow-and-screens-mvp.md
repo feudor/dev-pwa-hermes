@@ -1,6 +1,6 @@
-# PWA‑Hermes — UI Flow & Screens (MVP voice‑only)
+# PWA‑Hermes — UI Flow & Screens (MVP multimodal: текст + голос)
 
-> MVP: голос → STT → Hermes → TTS, **без стриминга**. Результат показывается после обработки (polling).
+> MVP: мультимодальные сообщения (текст и голос → STT) → Hermes → TTS, **без стриминга**. Результат показывается после завершения обработки (polling).
 > Параллельно — до **5** чатов.
 
 ## 0) Общие принципы UI (для iPhone/iPad/macOS Safari)
