@@ -40,27 +40,47 @@
 - `border-base`: 1px solid `color-border`
 - `border-radius`: как в radius-* для компонента
 
-## 6) Color system
+## 6) Color system (strict shadcn palette)
 
-### 6.1 Neutral шкала (используем shadcn-like)
-Поставим целевые нейтралы в семантические токены:
-- `color-bg`: `#ffffff`
-- `color-surface`: `#f8fafc` (очень светлая поверхность)
-- `color-text`: `#0b0f19`
-- `color-muted`: `#5b6577`
-- `color-border`: `#e5e7eb`
-- `color-ring`: `#d1d5db`
+> Мы фиксируем основу на **shadcn/ui** монохромной palette: `zinc / neutral / stone`.
+> Внутри приложения цвета используются только как **семантические токены**.
+
+### 6.1 Neutral шкала
+Цель: без своих hex-значений — только маппинг на shadcn нейтралы.
+
+Используем:
+- `bg`: `zinc` (или `neutral`) — самые светлые уровни
+- `surface`: `stone` (или `zinc`) — чуть отличающиеся светлые поверхности
+- `text`: `zinc` — тёмные уровни
+- `muted`: `zinc` — средние уровни
+- `border`: `zinc`/`neutral` — светлые границы
+- `ring`: `zinc` — для фокуса
+
+Как семантические токены маппятся на shadcn:
+- `color-bg` → `zinc-50`
+- `color-surface` → `zinc-100` или `stone-50`
+- `color-text` → `zinc-900`
+- `color-muted` → `zinc-600`
+- `color-border` → `zinc-200` (или `neutral-200`)
+- `color-ring` → `zinc-300`
+
+> Если у тебя уже есть стандарт по конкретным уровням zinc/neutral/stone — скажи, я подгоню mapping под него.
 
 ### 6.2 Accent (один)
-Акцент задаём одним семантическим цветом:
-- `color-accent`: `#111827` (под пример “CTA zinc/neutral”)
-- `color-accent-text`: `#ffffff`
+Акцент **строго** из монохромных уровней shadcn (CTA/ключевые состояния):
+- `color-accent` → `zinc-900` (или `neutral-900`)
+- `color-accent-text` → `zinc-50` / `white` (если нужно)
 
 ### 6.3 Status colors (минимум)
-Без радужности, только функциональные статусы:
-- `color-success` / `color-danger` / `color-warning` — только если UI реально требует.
+Только функциональные статусы, без “радуги”.
 
-> На MVP можно ограничиться текстовыми бейджами + иконками без насыщенной раскраски.
+В MVP можно:
+- `status-processing`: выделение фокусом/бордером из нейтралов
+- `status-ready`: иконка/текст без цветных заливок
+- `status-error`: danger-иконка из нейтралов + текст “ошибка” (или красный только если реально нельзя иначе)
+
+> В документе не используем заранее зафиксированные hex — всё через shadcn уровни (zinc/neutral/stone).
+
 
 ## 7) Shadows
 Избегаем “тяжёлых” теней и цветных тюнингом.
